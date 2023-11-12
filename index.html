@@ -3,9 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Echo</title>
+    <title>echo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <p>This is the landing Page</p>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="journal.html">Journal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">History</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Share</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+        <h1 class="display-4">echo</h1>
+        <p class="lead">a new way to journal daily</p>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container">
+        <div class="row feature">
+            <div class="col-md-4">
+                <i class="fas fa-mobile-alt feature-icon"></i>
+                <h3>Track Memories Daily</h3>
+                <p>Take a couple minutes to journal using our easy-to-follow guides</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-cogs feature-icon"></i>
+                <h3>Reflect on the Past</h3>
+                <p>View previous journal entries in the History tab</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-thumbs-up feature-icon"></i>
+                <h3>Share with Others</h3>
+                <p>Easily share your entries with loved ones and friends to cherish memories together</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add login here? -->
+    <form class="login">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter username:</label>
+          <input type="username" class="form-control" id="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Enter password:</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div id="new-acc">
+            <span>Need to create an account?</span>
+            <a href="#">Click here</a>
+        </div>
+        <button type="submit" class="btn btn-primary" id="login-btn">Login</button>
+      </form>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+    </div>
 </body>
 </html>
