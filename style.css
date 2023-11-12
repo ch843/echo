@@ -72,3 +72,12 @@ body {
   align-items: center;
   margin-bottom: 1em;
 }
+
+.entry {
+  margin: 5em;
+}
+
+#new-entry-h1 {
+  text-align: center;
+  margin-top: 2em;
+}
