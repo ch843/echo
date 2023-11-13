@@ -33,6 +33,26 @@
         </div>
     </nav>
 
+    <!-- new entry button and searchbar  -->
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6 text-center">
+                <a href="journal.html" class="btn btn-success">Start New Journal Entry</a>
+            </div>
+            <div class="col-md-6 mb-3">
+                <form action="/search" method="get" class="text-center">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="journalTitle" name="title"
+                            placeholder="Enter title or date">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Jumbotron -->
     <div class="jumbotron" id="jumbotron">
         <h1 class="display-4">echo</h1>

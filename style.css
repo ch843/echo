@@ -15,6 +15,49 @@ body {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Add this style for improved button alignment */
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+/* Center the search box and new journal entry button */
+.container {
+  text-align: center;
+  margin-top: 50px;
+  /* Adjust margin-top as needed */
+}
+
+/* Style for the "Start New Journal Entry" button */
+.btn-success {
+  font-size: 1.5em;
+  /* Add any additional styling you prefer */
+}
+
+/* Optional: Add some spacing between the buttons */
+.col-md-6 {
+  margin-bottom: 20px;
+}
+
+/* Style for the "Start New Journal Entry" button */
+.btn-success {
+  font-size: 1.5em;
+  background-color: #537d90;
+  /* Green color */
+  border-color: #537d90;
+  color: #fff;
+  /* White text color */
+  transition: background-color 0.3s ease-in-out;
+  /* Smooth transition for color change */
+}
+
+/* Hover effect for the "Start New Journal Entry" button */
+.btn-success:hover {
+  background-color: #537d90;
+  /* Darker green color on hover */
+  border-color: #537d90;
+}
+
 .navbar {
   background-color: #506C7F;
 }
