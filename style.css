@@ -3,17 +3,18 @@ body {
     background-color: #f8f9fa;
 }
 
-.jumbotron {
+#jumbotron {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    color: black;
+    background-color: #c8dfea;
     padding: 100px 25px;
     text-align: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .navbar {
-  background-color: #e9ecef;
+  background-color: #c8dfea;
 }
 
 .feature {
@@ -27,7 +28,7 @@ body {
 }
 
 .footer {
-    background-color: #343a40;
+    background-color: #537d90;
     color: #ffffff;
     text-align: center;
     padding: 20px 0;
@@ -86,4 +87,8 @@ body {
   flex-flow: row nowrap;
   justify-content: center;
   margin-top: 2em;
+}
+
+h3 {
+  color: #537d90;
 }
