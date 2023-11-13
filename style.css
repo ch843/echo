@@ -7,14 +7,16 @@ body {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    background-color: #c8dfea;
+    /* background-color: #c8dfea; */
+    background-color: #506C7F;
+    color: white;
     padding: 100px 25px;
     text-align: center;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .navbar {
-  background-color: #c8dfea;
+  background-color: #506C7F;
 }
 
 .feature {
