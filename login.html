@@ -15,8 +15,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <!-- have these pages below be deactivated until the user is logged in! -->
                 <li class="nav-item">
@@ -26,43 +26,32 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">History</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.html">Login</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="login.html">Login<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!-- Jumbotron -->
-    <div class="jumbotron">
-        <h1 class="display-4">echo</h1>
-        <p class="lead">a new way to journal daily</p>
-    </div>
+    <h1 class="title">Login</h1>
 
-    <!-- Features Section -->
-    <div class="container">
-        <div class="row feature">
-            <div class="col-md-4">
-                <i class="fas fa-mobile-alt feature-icon"></i>
-                <h3>Track Memories Daily</h3>
-                <p>Take a couple minutes to journal using our easy-to-follow guides</p>
+    <!-- Login portal -->
+    <div class="container" id="login-section">
+        <form class="login">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Enter username:</label>
+                <input type="username" class="form-control" id="username" placeholder="Username">
             </div>
-            <div class="col-md-4">
-                <i class="fas fa-cogs feature-icon"></i>
-                <h3>Reflect on the Past</h3>
-                <p>View previous journal entries in the History tab</p>
+                <div class="form-group">
+                <label for="exampleInputPassword1">Enter password:</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
-            <div class="col-md-4">
-                <i class="fas fa-thumbs-up feature-icon"></i>
-                <h3>Share with Others</h3>
-                <p>Easily share your entries with loved ones and friends to cherish memories together</p>
+            <div id="new-acc">
+                <span>Need to create an account?</span>
+                <a href="#">Click here</a>
             </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+            <button type="submit" class="btn btn-primary" id="login-btn">Login</button>
+      </form>
     </div>
 </body>
 </html>

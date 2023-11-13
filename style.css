@@ -46,12 +46,11 @@ body {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  margin-left: 30%;
-  margin-right: 30%;
   padding-top: 2em;
   padding-bottom: 2em;
   outline: 2px solid #e9ecef;
   border-radius: 3em;
+  padding: 3em;
 }
 
 .form-group {
@@ -77,7 +76,14 @@ body {
   margin: 5em;
 }
 
-#new-entry-h1 {
+.title {
   text-align: center;
+  margin-top: 2em;
+}
+
+#login-section {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
   margin-top: 2em;
 }
