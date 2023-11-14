@@ -40,22 +40,23 @@ body {
 }
 
 /* Style for the "Start New Journal Entry" button */
-.btn-success {
-  font-size: 1.5em;
+#btn-success, #btn-search {
+  font-size: 1em;
   background-color: #537d90;
   /* Green color */
   border-color: #537d90;
   color: #fff;
   /* White text color */
-  transition: background-color 0.3s ease-in-out;
+  /* transition: background-color 0.3s ease-in-out; */
   /* Smooth transition for color change */
 }
 
 /* Hover effect for the "Start New Journal Entry" button */
-.btn-success:hover {
-  background-color: #537d90;
+#btn-success:hover, #btn-search:hover {
+  background-color: #c8dfea;
   /* Darker green color on hover */
-  border-color: #537d90;
+  border-color: #c8dfea;
+  color: #537d90;
 }
 
 .navbar {
