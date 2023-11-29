@@ -1,6 +1,17 @@
 // THIS WILL BE OUR EXPRESS APP FILE!! (like index.js in class)
 const express = require('express');
-const db = require('./db');
+
+const db = require("knex") ({
+    // pass parameters to it
+    client: "pg",
+    connection: {
+        host: "localhost",
+        user: "postgres",
+        password: "admin",
+        database: "echo",
+        port: 5432
+    }
+});
 
 const app = express();
 const port = 3000;
