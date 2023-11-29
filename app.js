@@ -17,15 +17,19 @@ const db = require("knex") ({
 const app = express();
 const port = 3000;
 
+// ------ ROUTES ------
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// home page
+// route to home page
 app.get('/', (req, res) => {
     const filePath = path.join(__dirname, 'index.html');
     res.sendFile(filePath);
 });
 
+// TODO: need routes for each of our other pages
+
+// ----- DATABASS CALLS --------
 //  route for verifying user
 app.get('/login', async (req, res) => {
     db('user')
