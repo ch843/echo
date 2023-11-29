@@ -1,5 +1,6 @@
 // THIS WILL BE OUR EXPRESS APP FILE!! (like index.js in class)
 const express = require('express');
+let path = require("path");
 
 const db = require("knex") ({
     // pass parameters to it
@@ -15,6 +16,15 @@ const db = require("knex") ({
 
 const app = express();
 const port = 3000;
+
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// home page
+app.get('/', (req, res) => {
+    const filePath = path.join(__dirname, 'index.html');
+    res.sendFile(filePath);
+});
 
 //  route for verifying user
 app.get('/login', async (req, res) => {
