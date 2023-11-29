@@ -1,55 +1,92 @@
 const express = require('express');
-const { searchEntries, getEntries, postEntry, verifyUser, createUser } = require('./database.js'); // Replace with the actual path to your db.js file
+const db = require('./db');
 
 const app = express();
 const port = 3000;
 
 //  route for verifying user
 app.get('/login', async (req, res) => {
-    // use verifyUser() function
+    db('journal')
+    // fill in with the values we need to query
+    .where({ username: username, password: password })
+    .select('*')
+    .then(entries => {
+      res.status(200).json(entries);
+    })
+    .catch(error => {
+      console.error('Error retrieving journal entries:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
 });
 
 //  route for creating user
-app.get('/createUser', async (req, res) => {
-    // use createUser() function
+app.get('/create', async (req, res) => {
+    // Insert the new user into the 'user' table
+    db('user')
+    // can insert whatever columns we need
+    .insert({ username: username, password: password})
+    .returning('*')
+    .then(rows => {
+        res.status(201).json(rows[0]);
+    })
+    .catch(error => {
+        console.error('Error creating journal entry:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    });
 });
 
 // route for getting all journal entries from database
-app.get('/entries', async (req, res) => {
-    try {
-        const userID = localStorage.getItem("userID");
-        const entries = await getEntries(userID);
-        res.json(entries);
-    } catch (error) {
-        console.error('Error fetching entries:', error);
-        res.status(500).send('Internal Server Error');
-    }
+app.get('/history', async (req, res) => {
+    const userID = localStorage.getItem("userID");
+    
+    db('journal')
+    .where({ userID: userID })
+    .select('*')
+    .then(entries => {
+      res.status(200).json(entries);
+    })
+    .catch(error => {
+      console.error('Error retrieving journal entries:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
 });
 
 // route for posting a journal entry to database
-app.post('/createEntry', async (req, res) => {
-    try {
-        const userID = localStorage.getItem("userID");
-        // add title, entryDate, response1, response2, response3 as get element by ID from html form
-        const newEntry = await postEntry(userID, entryDate, title, response1, response2, response3);
-        res.json(newEntry);
-    } catch (error) {
-        console.error('Error fetching entries:', error);
-        res.status(500).send('Internal Server Error');
-    }
+app.post('/journal', async (req, res) => {
+    const userID = localStorage.getItem("userID");
+    // add title, entryDate, response1, response2, response3 as get element by ID from html form
+
+    // Insert the new journal entry into the 'journal' table
+    db('journal')
+    .insert({ userID: userID, entryDate: entryDate, title: title, response1: response1, response2: response2, response3: response3})
+    .returning('*')
+    .then(rows => {
+        res.status(201).json(rows[0]);
+    })
+    .catch(error => {
+        console.error('Error creating journal entry:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    });
 });
 
 // route for searching for entries
 app.get('/search', async (req, res) => {
-    try {
-        // add a document.getElementByID here to get searchTitle
-        const userID = localStorage.getItem("userID");
-        const results = await searchEntries(userID, searchTitle);
-        res.json(results);
-    } catch (error) {
-        console.error('Error fetching entries:', error);
-        res.status(500).send('Internal Server Error');
-    }
+    const userID = localStorage.getItem("userID");
+    const title = '';
+    // get title from search bar (get element by id) to grab string value
+    
+    db('journal')
+    .where({ userID: userID })
+    .whereILike({title: `${title}`})
+    .select('*')
+    .then(entries => {
+      res.status(200).json(entries);
+    })
+    .catch(error => {
+      console.error('Error retrieving journal entries:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
+
 });
 
 app.listen(port, () => {
