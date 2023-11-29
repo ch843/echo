@@ -6,7 +6,7 @@ const port = 3000;
 
 //  route for verifying user
 app.get('/login', async (req, res) => {
-    db('journal')
+    db('user')
     // fill in with the values we need to query
     .where({ username: username, password: password })
     .select('*')
@@ -14,7 +14,7 @@ app.get('/login', async (req, res) => {
       res.status(200).json(entries);
     })
     .catch(error => {
-      console.error('Error retrieving journal entries:', error);
+      console.error('Error retrieving user:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     });
 });
@@ -30,7 +30,7 @@ app.get('/create', async (req, res) => {
         res.status(201).json(rows[0]);
     })
     .catch(error => {
-        console.error('Error creating journal entry:', error);
+        console.error('Error creating user:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     });
 });
@@ -83,7 +83,7 @@ app.get('/search', async (req, res) => {
       res.status(200).json(entries);
     })
     .catch(error => {
-      console.error('Error retrieving journal entries:', error);
+      console.error('Error searching for journal entries:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     });
 
