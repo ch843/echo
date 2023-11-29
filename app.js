@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 // TODO: need routes for each of our other pages
 
-// ----- DATABASS CALLS --------
+// ----- DATABASE CALLS --------
 //  route for verifying user
 app.get('/login', async (req, res) => {
     db('user')
