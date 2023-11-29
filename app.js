@@ -1,3 +1,4 @@
+// THIS WILL BE OUR EXPRESS APP FILE!! (like index.js in class)
 const express = require('express');
 const db = require('./db');
 
