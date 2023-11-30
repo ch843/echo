@@ -1,0 +1,54 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<body>
+     <!-- Jumbotron -->
+     <div class="jumbotron" id="jumbotron">
+        <h1 class="display-4">echo</h1>
+        <p class="lead">an easy way to journal daily</p>
+    </div>
+
+    <!-- new entry button and searchbar  -->
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6 text-center">
+                <a href="journal.html" class="btn" id="btn-success">+ Journal Entry</a>
+            </div>
+            <div class="col-md-6 mb-3">
+                <form action="/search" method="get" class="text-center">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="journalTitle" name="title"
+                            placeholder="Search for journal title">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary" id="btn-search">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <!-- <div class="container">
+        <div class="row feature">
+            <div class="col-md-4">
+                <i class="fas fa-mobile-alt feature-icon"></i>
+                <h3>Track Memories Daily</h3>
+                <p>Take a couple minutes to journal using our easy-to-follow guides</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-cogs feature-icon"></i>
+                <h3>Reflect on the Past</h3>
+                <p>View previous journal entries in the History tab</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-thumbs-up feature-icon"></i>
+                <h3>Share with Others</h3>
+                <p>Easily share your entries with loved ones and friends to cherish memories together</p>
+            </div>
+        </div>
+    </div> -->
+    <div>
+        <p>Maybe have the journal history view here?</p>
+    </div>
+</body>
+<%- include('../partials/footer') %>
