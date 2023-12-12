@@ -161,3 +161,35 @@ h3 {
 h3 {
   color: #537d90;
 }
+
+/* for table search feature */
+.results tr[visible='false'],
+.no-result{
+  display:none;
+}
+
+.results tr[visible='true']{
+  display:table-row;
+}
+
+.counter{
+  padding:1em; 
+  color:#ccc;
+  float: right;
+}
+
+#small-search {
+    width: 10em;
+    float: right;
+}
+
+#table-container {
+    width: 80%; 
+    overflow-x: auto;
+    margin: 20px auto; 
+}
+
+table {
+    width: 100%; 
+    border-collapse: collapse; 
+}
