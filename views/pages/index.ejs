@@ -2,53 +2,46 @@
 <%- include('../partials/header') %>
 <body>
      <!-- Jumbotron -->
-     <div class="jumbotron" id="jumbotron">
-        <h1 class="display-4">echo</h1>
-        <p class="lead">an easy way to journal daily</p>
-    </div>
-
-    <!-- new entry button and searchbar  -->
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-6 text-center">
-                <a href="journal.html" class="btn" id="btn-success">+ Journal Entry</a>
-            </div>
-            <div class="col-md-6 mb-3">
-                <form action="/search" method="get" class="text-center">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="journalTitle" name="title"
-                            placeholder="Search for journal title">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary" id="btn-search">Search</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <div id="jumbotron">
+        <img src="echo-lp.jpeg" alt="Echo: An easy way to record memories">
+        <!-- <h1 class="display-4">echo</h1>
+        <p class="lead">an easy way to journal daily</p> -->
     </div>
 
     <!-- Features Section -->
-    <!-- <div class="container">
+    <div class="container">
         <div class="row feature">
             <div class="col-md-4">
-                <i class="fas fa-mobile-alt feature-icon"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" fill="#3B4650" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                </svg>
                 <h3>Track Memories Daily</h3>
-                <p>Take a couple minutes to journal using our easy-to-follow guides</p>
+                <p>Take a couple minutes to journal each day using our easy-to-follow guides</p>
             </div>
             <div class="col-md-4">
-                <i class="fas fa-cogs feature-icon"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" fill="#3B4650" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"/>
+                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"/>
+                </svg>
                 <h3>Reflect on the Past</h3>
                 <p>View previous journal entries in the History tab</p>
             </div>
             <div class="col-md-4">
-                <i class="fas fa-thumbs-up feature-icon"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" fill="#3B4650" class="bi bi-send" viewBox="0 0 16 16">
+                    <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                </svg>
                 <h3>Share with Others</h3>
                 <p>Easily share your entries with loved ones and friends to cherish memories together</p>
             </div>
         </div>
-    </div> -->
-    <div>
-        <p>Maybe have the journal history view here?</p>
+    </div>
+     <!-- new entry button -->
+     <div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6 text-center">
+                <a href="/login" class="btn" id="btn-success" style="font-family: 'Abril Fatface', serif; font-size: 1.7em;">get started</a>
+            </div>
     </div>
 </body>
 <%- include('../partials/footer') %>

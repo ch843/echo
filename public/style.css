@@ -1,18 +1,47 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat&display=swap');
+
+* {
+  background-color: #D4DCDE;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
+  font-family: 'Montserrat', sans-serif !important;
+  color: #3B4650 !important;
+  background-color: #D4DCDE !important;
 }
 
 #jumbotron {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    /* background-color: #c8dfea; */
-    background-color: #506C7F;
-    color: white;
-    padding: 100px 25px;
-    text-align: center;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  background-color: #D4DCDE;
+  margin: 0px;
+}
+
+#jumbotron img {
+  max-width: 40%;
+  height: auto;
+}
+
+.navbar {
+  background-color: #D4DCDE;
+  font-size: 1.5em;
+  color: #3B4650;
+  font-family: 'Abril Fatface', serif;
+}
+
+#logo {
+  width: 5em;
+}
+
+.title {
+  text-align: center;
+  padding-top: 2em;
+  margin: 0px;
+  font-weight: bold;
+}
+
+h3 {
+  padding-top: 1em;
 }
 
 /* Add this style for improved button alignment */
@@ -59,10 +88,6 @@ body {
   color: #537d90;
 }
 
-.navbar {
-  background-color: #506C7F;
-}
-
 .feature {
     text-align: center;
     padding: 50px 0;
@@ -84,9 +109,15 @@ body {
 }
 
 #login-btn {
-  background-color: #e9ecef;
-  border-color: #e9ecef;
-  color: black;
+  background-color: #4B8D97;
+  border-color: #4B8D97;
+  color: white;
+}
+
+#login-btn:hover {
+  background-color: #6EBEC9;
+  border-color: #6EBEC9;
+  color: white;
 }
 
 .login {
@@ -120,19 +151,15 @@ body {
 }
 
 .entry {
-  margin: 5em;
-}
-
-.title {
-  text-align: center;
-  margin-top: 2em;
+  /* first number styles the top/bottom, second is left/right */
+  margin: 3em 7em;
 }
 
 #login-section {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  margin-top: 2em;
+  padding-top: 2em;
 }
 
 h3 {
