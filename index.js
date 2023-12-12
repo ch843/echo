@@ -51,7 +51,7 @@ app.get('/history', (req, res) => {
 })
 
 app.get('/createUser', (req, res) => {
-  res.render('pages/createUser', { loggedin: req.session.loggedin, username: req.session.username })
+  res.render('pages/createUser', { loggedin: req.session.loggedin, msg: ""})
 })
 // ----- DATABASE CALLS --------
 //  route for verifying user
