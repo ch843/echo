@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-  if (loggedin) {
+  if (req.session.loggedin) {
     res.render('pages/login', { msg: "success", loggedin: req.session.loggedin })
   }
   else {
@@ -50,6 +50,9 @@ app.get('/history', (req, res) => {
   res.render('pages/history', { loggedin: req.session.loggedin, username: req.session.username })
 })
 
+app.get('/createUser', (req, res) => {
+  res.render('pages/createUser', { loggedin: req.session.loggedin, username: req.session.username })
+})
 // ----- DATABASE CALLS --------
 //  route for verifying user
 app.get('/validate', async (req, res) => {
