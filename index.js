@@ -60,7 +60,7 @@ app.get('/validate', async (req, res) => {
   const passwordToCheck = req.body.password ? req.body.password : '';
   try {
     if (usernameToCheck && passwordToCheck) {
-      const user = await knex.from('users').select('username', 'status').where({ username: usernameToCheck, password: passwordToCheck }).first();
+      const user = await knex.from('users').select('userID', 'username').where({ username: usernameToCheck, password: passwordToCheck }).first();
 
       if (user) {
         req.session.loggedin = true;
@@ -79,8 +79,27 @@ app.get('/validate', async (req, res) => {
 
 
 app.get('/create', async (req, res) => {
-    // Insert the new user into the 'user' table
+  const usernameToCheck = req.body.username ? req.body.username : '';
+  const passwordOne = req.body.password ? req.body.password : '';
+  const passwordTwo = req.body.newPassword ? req.body.newPassword : '';
+  let user = await knex.from('users').where({ username: usernameToCheck }).first();
 
+  if (user) {
+    res.render('pages/createAccount', { msg: 'error', loggedin: req.session.loggedin });
+  }
+  else if (passwordOne != passwordTwo) {
+    res.render('pages/createAccount', { msg: 'password', loggedin: req.session.loggedin });
+  }
+  else {
+    knex.from("users").insert({
+      username: req.body.username,
+      password: req.body.password
+    }).then(entry => {
+      res.redirect('/login');
+    }).catch(error => {
+      console.error(error);
+    });
+  };
 });
 
 app.get('/logout', (req, res) => {
@@ -93,6 +112,8 @@ app.get('/logout', (req, res) => {
 
 app.get('/getEntries', async (req, res) => {
     // dynamically generate a table for past journal entries (just title and date)
+    let result = knex.from('survey_info').select('entryDate', 'entryTitle').where({ userID: req.session.userID });
+    res.render('pages/surveyResults', { loggedin: req.session.loggedin, entries: result });
 });
 
 
