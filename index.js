@@ -4,21 +4,21 @@ let path = require("path");
 const session = require('express-session');
 
 const knex = require("knex") ({
-    // pass parameters to it
     client: "pg",
     connection: {
-        host: "localhost",
-        user: "postgres",
-        password: "admin",
-        database: "echo",
-        port: 5432
+      host: process.env.RDS_HOSTNAME || 'localhost', // name of host, on AWS use the one they give 
+      user:  process.env.RDS_USERNAME || 'postgres', // name of user w/ permissions on database 
+      password: process.env.RDS_PASSWORD || 'admin',
+      database:  process.env.RDS_DB_NAME || 'echo', // name of database on postgres
+      port:  process.env.RDS_PORT || 5432, // port number for postgres (postgres > properties > connection > port)
+      ssl: process.env.DB_SSL_INTEX ? {rejectUnauthorized: false} : false
     }
 });
 
 const app = express();
 const port = 3000;
 
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
 
 app.use(session({
 	secret: 'secret',
@@ -30,29 +30,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ------ ROUTES ------
 app.get('/', (req, res) => {
-  res.render('pages/index', { loggedin: req.session.loggedin })
-})
+  res.render('pages/index', { loggedin: req.session.loggedin });
+});
 
 app.get('/login', (req, res) => {
   if (req.session.loggedin) {
-    res.render('pages/login', { msg: "success", loggedin: req.session.loggedin })
+    res.render('pages/login', { msg: "success", loggedin: req.session.loggedin });
   }
   else {
-    res.render('pages/login', { msg: "", loggedin: req.session.loggedin })
-  }
-})
+    res.render('pages/login', { msg: "", loggedin: req.session.loggedin });
+  };
+});
 
 app.get('/journal', (req, res) => {
-    res.render('pages/journal', { loggedin: req.session.loggedin })
-})
+    res.render('pages/journal', { loggedin: req.session.loggedin });
+});
 
 app.get('/history', (req, res) => {
-  res.render('pages/history', { loggedin: req.session.loggedin, username: req.session.username })
-})
+  res.render('pages/history', { loggedin: req.session.loggedin, username: req.session.username, entries: req.session.entries });
+});
 
 app.get('/createUser', (req, res) => {
-  res.render('pages/createUser', { loggedin: req.session.loggedin, msg: ""})
-})
+  res.render('pages/createUser', { loggedin: req.session.loggedin, msg: ""});
+});
 // ----- DATABASE CALLS --------
 //  route for verifying user
 app.get('/validate', async (req, res) => {
@@ -112,14 +112,25 @@ app.get('/logout', (req, res) => {
 
 app.get('/getEntries', async (req, res) => {
     // dynamically generate a table for past journal entries (just title and date)
-    let result = knex.from('survey_info').select('entryDate', 'entryTitle').where({ userID: req.session.userID });
-    res.render('pages/surveyResults', { loggedin: req.session.loggedin, entries: result });
+    let result = knex.from('journal').select('entryDate', 'entryTitle').where({ userID: req.session.userID });
+    req.session.entries = result;
+    res.render('/history');
 });
 
 
 app.post('/addEntry', async (req, res) => {
   // add journal entry to entries table
-
+  knex.from("journal").insert({
+    entryDate: req.body.date,
+    entryTitle: req.body.title,
+    response1: req.body.response1,
+    response2: req.body.response2,
+    response3: req.body.response3
+  }).then(entry => {
+    res.redirect('/history');
+  }).catch(error => {
+    console.error(error);
+  });
 });
 
 app.listen(port, () => {

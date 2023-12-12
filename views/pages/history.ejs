@@ -1,11 +1,44 @@
 <%- include('../partials/head') %>
 <%- include('../partials/header') %>
 <body>
+    <script>
+        // jQuery code for search bar and counter for number of items
+        $(document).ready(function() {
+            $(".search").keyup(function() {
+                var searchTerm = $(".search").val();
+                var listItem = $('.results tbody').children('tr');
+                var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+
+                $.extend($.expr[':'], {
+                    'containsi': function(elem, i, match, array) {
+                        return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+                    }
+                });
+
+                $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e) {
+                    $(this).attr('visible', 'false');
+                });
+
+                $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e) {
+                    $(this).attr('visible', 'true');
+                });
+
+                var jobCount = $('.results tbody tr[visible="true"]').length;
+                $('.counter').text(jobCount + ' item(s)');
+
+                if (jobCount == '0') {
+                    $('.no-result').show();
+                } else {
+                    $('.no-result').hide();
+                }
+            });
+        });
+    </script>
     <h1 class="title">Welcome, 
         <span><% username %></span> 
     </h1>
     <!-- replace with search feature here we used in intex -->
-    <div class="col-md-6 mb-3">
+    <!-- <div class="col-md-6 mb-3">
         <form action="/search" method="get" class="text-center">
             <div class="input-group">
                 <input type="text" class="form-control" id="journalTitle" name="title"
@@ -15,6 +48,13 @@
                 </div>
             </div>
         </form>
+    </div> -->
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="form-group">
+            <span class="counter"></span>
+            <input type="text" class="search form-control" id="small-search" placeholder="Search...">
+            <br><br>
+        </div>
     </div>
     <!-- dynamically generate table to show past entries -->
     <div class="container" id="table-container">
