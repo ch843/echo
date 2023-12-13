@@ -46,15 +46,24 @@ app.get('/journal', (req, res) => {
 });
 
 app.get('/history', (req, res) => {
-  res.render('pages/history', { loggedin: req.session.loggedin, username: req.session.username, entries: req.session.entries });
+  let result = knex.from('journal').select('entryDate', 'entryTitle').where({ username: req.session.username });
+  res.render('pages/history', { loggedin: req.session.loggedin, username: req.session.username, entries: result });
 });
 
 app.get('/createUser', (req, res) => {
   res.render('pages/createUser', { loggedin: req.session.loggedin, msg: ""});
 });
 
+app.get('/logout', (req, res) => {
+  delete req.session.username;
+  delete req.session.password;
+  delete req.session.status;
+  delete req.session.loggedin;
+  res.render('pages/login', { msg: "logout", loggedin: req.session.loggedin });
+});
+
 // ----- DATABASE CALLS --------
-app.get('/validate', async (req, res) => {
+app.post('/validate', async (req, res) => {
   const usernameToCheck = req.body.username ? req.body.username : '';
   const passwordToCheck = req.body.password ? req.body.password : '';
   try {
@@ -76,7 +85,7 @@ app.get('/validate', async (req, res) => {
 });
 
 
-app.get('/create', async (req, res) => {
+app.post('/create', async (req, res) => {
   const usernameToCheck = req.body.username ? req.body.username : '';
   const passwordOne = req.body.password ? req.body.password : '';
   const passwordTwo = req.body.newPassword ? req.body.newPassword : '';
@@ -98,21 +107,6 @@ app.get('/create', async (req, res) => {
       console.error(error);
     });
   };
-});
-
-app.get('/logout', (req, res) => {
-  delete req.session.username;
-  delete req.session.password;
-  delete req.session.status;
-  delete req.session.loggedin;
-  res.render('pages/login', { msg: "logout", loggedin: req.session.loggedin });
-});
-
-app.get('/getEntries', async (req, res) => {
-    // dynamically generate a table for past journal entries (just title and date)
-    let result = knex.from('journal').select('entryDate', 'entryTitle').where({ username: req.session.username });
-    req.session.entries = result;
-    res.render('/history');
 });
 
 
