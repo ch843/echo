@@ -118,12 +118,12 @@ app.post('/create', async (req, res) => {
 app.post('/addEntry', async (req, res) => {
   // add journal entry to entries table
   knex.from("journal").insert({
-    username: req.session.username,
     entryDate: req.body.date,
     entryTitle: req.body.title,
     response1: req.body.response1,
     response2: req.body.response2,
-    response3: req.body.response3
+    response3: req.body.response3,
+    username: req.session.username
   }).then(entry => {
     res.redirect('/history');
   }).catch(error => {
