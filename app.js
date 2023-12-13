@@ -83,10 +83,10 @@ app.get('/create', async (req, res) => {
   let user = await knex.from('users').where({ username: usernameToCheck }).first();
 
   if (user) {
-    res.render('pages/createAccount', { msg: 'error', loggedin: req.session.loggedin });
+    res.render('pages/createUser', { msg: 'error', loggedin: req.session.loggedin });
   }
   else if (passwordOne != passwordTwo) {
-    res.render('pages/createAccount', { msg: 'password', loggedin: req.session.loggedin });
+    res.render('pages/createUser', { msg: 'password', loggedin: req.session.loggedin });
   }
   else {
     knex.from("users").insert({
