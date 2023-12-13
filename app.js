@@ -48,7 +48,7 @@ app.get('/journal', (req, res) => {
 });
 
 app.get('/history', (req, res) => {
-  let result = knex.from('journal').select('entryDate', 'entryTitle').where({ username: req.session.username });
+  let result = knex.from('journal').select('entrydate', 'entrytitle').where({ username: req.session.username });
   res.render('pages/history', { loggedin: req.session.loggedin, username: req.session.username, entries: result });
 });
 
@@ -118,8 +118,8 @@ app.post('/create', async (req, res) => {
 app.post('/addEntry', async (req, res) => {
   // add journal entry to entries table
   knex.from("journal").insert({
-    entryDate: req.body.date,
-    entryTitle: req.body.title,
+    entrydate: req.body.date,
+    entryditle: req.body.title,
     response1: req.body.response1,
     response2: req.body.response2,
     response3: req.body.response3,
