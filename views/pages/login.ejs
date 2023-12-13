@@ -19,14 +19,14 @@
                 <a href="/createUser" style="color: #4B8D97">Click here</a>
             </div>
             <button type="submit" class="btn btn-primary" id="login-btn">Login</button>
+            <% if (msg == "error") { %>
+                <p style="margin-top: 1em; color: red">Invalid credentials. Please try again or contact administrator.</p>
+            <% } else if (msg == "success") { %>
+                <p style="margin-top: 1em; color: green">You are already logged in. Feel free to explore other pages.</p>
+            <% } else if (msg == "logout") { %>
+                <p style="margin-top: 1em; color: green">You have been logged out.</p>
+            <% } %>
         </form>
-        <% if (msg == "error") { %>
-            <p style="margin-top: 1em; color: red">Invalid credentials. Please try again or contact administrator.</p>
-        <% } else if (msg == "success") { %>
-            <p style="margin-top: 1em; color: green">You are already logged in. Feel free to explore other pages.</p>
-        <% } else if (msg == "logout") { %>
-            <p style="margin-top: 1em; color: green">You have been logged out.</p>
-        <% } %>
     </div>
 </body>
 <%- include('../partials/footer') %>
