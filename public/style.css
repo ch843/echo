@@ -116,7 +116,7 @@ h3 {
   color: white;
 }
 
-.login {
+.login-section {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
