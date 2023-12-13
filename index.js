@@ -53,8 +53,8 @@ app.get('/history', (req, res) => {
 app.get('/createUser', (req, res) => {
   res.render('pages/createUser', { loggedin: req.session.loggedin, msg: ""});
 });
+
 // ----- DATABASE CALLS --------
-//  route for verifying user
 app.get('/validate', async (req, res) => {
   const usernameToCheck = req.body.username ? req.body.username : '';
   const passwordToCheck = req.body.password ? req.body.password : '';
