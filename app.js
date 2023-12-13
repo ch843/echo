@@ -66,6 +66,7 @@ app.get('/logout', (req, res) => {
 app.post('/validate', async (req, res) => {
   const usernameToCheck = req.body.username ? req.body.username : '';
   const passwordToCheck = req.body.password ? req.body.password : '';
+
   try {
     if (usernameToCheck && passwordToCheck) {
       const user = await knex.from('users').select('username').where({ username: usernameToCheck, password: passwordToCheck }).first();
@@ -88,7 +89,7 @@ app.post('/validate', async (req, res) => {
 app.post('/create', async (req, res) => {
   const usernameToCheck = req.body.username ? req.body.username : '';
   const passwordOne = req.body.password ? req.body.password : '';
-  const passwordTwo = req.body.newPassword ? req.body.newPassword : '';
+  const passwordTwo = req.body.confirmPassword ? req.body.confirmPassword : '';
   let user = await knex.from('users').where({ username: usernameToCheck }).first();
 
   if (user) {

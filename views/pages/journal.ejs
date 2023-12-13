@@ -5,23 +5,23 @@
     <form class="entry" action="/addEntry" method="post">
         <div class="form-group">
           <label for="date">Date of Entry</label>
-          <input type="date" class="form-control" id="date" placeholder="MM/DD/YYYY">
+          <input type="date" class="form-control" id="date" name="date" placeholder="MM/DD/YYYY">
         </div>
         <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" placeholder="My Journal Entry">
+            <input type="text" class="form-control" id="title" name="placeholder" placeholder="My Journal Entry">
         </div>
         <div class="form-group">
           <label for="response1">Describe something that happened today</label>
-          <textarea class="form-control" id="reponse1" rows="3"></textarea>
+          <textarea class="form-control" id="reponse1" name="response1" rows="3"></textarea>
         </div>
         <div class="form-group">
             <label for="response2">Describe someone that made a difference in your day</label>
-            <textarea class="form-control" id="response2" rows="3"></textarea>
+            <textarea class="form-control" id="response2" name="response2" rows="3"></textarea>
         </div>
         <div class="form-group">
             <label for="response3">Describe a memory from today you want to remember</label>
-            <textarea class="form-control" id="response3" rows="5"></textarea>
+            <textarea class="form-control" id="response3" name="response3" rows="5"></textarea>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary" id="login-btn">Submit Entry</button>
