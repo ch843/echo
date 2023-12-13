@@ -47,9 +47,14 @@ app.get('/journal', (req, res) => {
     res.render('pages/journal', { loggedin: req.session.loggedin });
 });
 
-app.get('/history', (req, res) => {
-  let result = knex.from('journal').select('entrydate', 'entrytitle').where({ username: req.session.username });
-  res.render('pages/history', { loggedin: req.session.loggedin, username: req.session.username, entries: result });
+app.get('/history', async (req, res) => {
+  try {
+    let result = await knex.from('journal').select('entrydate', 'entrytitle').where({ username: req.session.username });
+    res.render('pages/history', { loggedin: req.session.loggedin, username: req.session.username, entries: result });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 app.get('/createUser', (req, res) => {
@@ -117,7 +122,7 @@ app.post('/create', async (req, res) => {
 
 app.post('/addEntry', async (req, res) => {
   // add journal entry to entries table
-  knex.from("journal").insert({
+  await knex.from("journal").insert({
     entrydate: req.body.date,
     entrytitle: req.body.title,
     response1: req.body.response1,
