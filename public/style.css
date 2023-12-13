@@ -179,13 +179,14 @@ h3 {
 
 .counter{
   padding:1em; 
-  color:#ccc;
+  color:rgb(122, 122, 122);
   float: right;
 }
 
 #small-search {
     width: 10em;
-    float: right;
+    /* float: right; */
+    margin-bottom: 0px !important;
 }
 
 #table-container {
