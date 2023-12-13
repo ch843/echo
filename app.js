@@ -90,6 +90,8 @@ app.post('/create', async (req, res) => {
   const usernameToCheck = req.body.username ? req.body.username : '';
   const passwordOne = req.body.password ? req.body.password : '';
   const passwordTwo = req.body.confirmPassword ? req.body.confirmPassword : '';
+  req.session.loggedin = false;
+  
   let user = await knex.from('users').where({ username: usernameToCheck }).first();
 
   if (user) {
