@@ -119,7 +119,7 @@ app.post('/addEntry', async (req, res) => {
   // add journal entry to entries table
   knex.from("journal").insert({
     entrydate: req.body.date,
-    entryditle: req.body.title,
+    entrytitle: req.body.title,
     response1: req.body.response1,
     response2: req.body.response2,
     response3: req.body.response3,

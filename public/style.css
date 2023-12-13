@@ -31,7 +31,7 @@ body {
 
 .title {
   text-align: center;
-  padding-top: 2em;
+  padding: 2em 2em 0em;
   margin: 0px;
   font-weight: bold;
 }
@@ -148,7 +148,12 @@ h3 {
 
 .entry {
   /* first number styles the top/bottom, second is left/right */
-  margin: 3em 7em;
+  margin: 3em 5em;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 3em;
+  outline: 2px solid #e9ecef;
+  border-radius: 3em;
 }
 
 #login-section {
