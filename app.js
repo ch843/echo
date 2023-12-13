@@ -3,6 +3,10 @@ const express = require('express');
 let path = require("path");
 const session = require('express-session');
 
+const app = express();
+const port = process.env.PORT || 3000;
+app.set('view engine', 'ejs');
+
 const knex = require("knex") ({
     client: "pg",
     connection: {
@@ -14,11 +18,6 @@ const knex = require("knex") ({
       ssl: process.env.DB_SSL_INTEX ? {rejectUnauthorized: false} : false
     }
 });
-
-const app = express();
-const port = 3000;
-
-app.set('view engine', 'ejs');
 
 app.use(session({
 	secret: 'secret',
