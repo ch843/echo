@@ -79,8 +79,8 @@
             <tbody>
                 <% for (let iCount = entries.length-1; iCount >= 0; iCount--) { %>
                     <tr>
-                        <td style="text-align: center;"><%= new Date(entries[iCount].entrydate).toDateString() %></td>
-                        <td style="text-align: center;"><%= entries[iCount].entrytitle %></td>
+                        <td style="text-align: center;" href="/entry/<%= entries[iCount].entryid %>"><%= new Date(entries[iCount].entrydate).toDateString() %></td>
+                        <td style="text-align: center;" href="/entry/<%= entries[iCount].entryid %>"><%= entries[iCount].entrytitle %></td>
                         <td style="text-align: center;">
                             <form action="/delete/<%= entries[iCount].entryid %>" method="POST" onsubmit="return confirmDelete()">
                                 <input type="hidden" name="entryid" value="<%= entries[iCount].entryid %>">
@@ -103,4 +103,3 @@
         }
     </script>
 </body>
-<%- include('../partials/footer') %>

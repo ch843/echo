@@ -1,0 +1,15 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<body>
+    <div class="login">
+        <h3 style="font-weight: bold;"><%= entry.title %></h3>
+        <h6><%= new Date(entry.date).toDateString() %></h6>
+        <br><br>
+        <h3>Something that happened today:</h3>
+        <p><%= entry.response1 %></p>
+        <h3>Someone that made a difference in your day:</h3>
+        <p><%= entry.response2 %></p>
+        <h3>A memory from today you want to remember:</h3>
+        <p><%= entry.response3 %></p>
+    </div>
+</body>
