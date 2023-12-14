@@ -148,9 +148,15 @@ app.get("/delete/:entryid", async(req, res)=> {
 });
 
 app.get("/entry/:entryid", async(req, res)=> {
-  let entry = await knex("journal").select('entrydate', 'entrytitle', 'response1', 'response2', 'response3').where({ entryid: req.params.entryid })
-  console.log("entry:", entry)
-  res.render("pages/entry", { entry: entry, loggedin: req.session.loggedin })
+  try {
+    const entryId = parseInt(req.params.entryid);
+    let entry = await knex("journal").select('entrydate', 'entrytitle', 'response1', 'response2', 'response3').where({ entryid: entryId });
+    console.log("entry:", entry);
+    res.render("pages/entry", { entry: entry, loggedin: req.session.loggedin });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 app.listen(port, () => {
