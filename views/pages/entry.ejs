@@ -2,16 +2,14 @@
 <%- include('../partials/header') %>
 <body>
     <div>
-        <h3 style="font-weight: bold;"><%= entry.title %></h3>
-        <h6><%= new Date(entry.date).toDateString() %></h6>
+        <h3 style="font-weight: bold;"><%= entry[0].title %></h3>
+        <h6><%  = new Date(entry[0].date).toDateString() %></h6>
         <br><br>
         <h3>Something that happened today:</h3>
-        <p><%= entry.response1 %></p>
+        <p><%= entry[0].response1 %></p>
         <h3>Someone that made a difference in your day:</h3>
-        <p><%= entry.response2 %></p>
+        <p><%= entry[0].response2 %></p>
         <h3>A memory from today you want to remember:</h3>
-        <p><%= entry.response3 %></p>
-        <p>Entry woooo</p>
-        <p><%= entry %></p>
+        <p><%= entry[0].response3 %></p>
     </div>
 </body>
