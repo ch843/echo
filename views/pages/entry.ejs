@@ -2,9 +2,8 @@
 <%- include('../partials/header') %>
 <body>
     <div class="entry-container">
-        <h3 style="font-weight: bold;"><%= entry[0].entrytitle %></h3>
-        <% let newDate = new Date(entry[0].entrydate).toDateString() %>
-        <h6><%= newDate %></h6>
+        <h1 class="title" style="font-weight: bold;"><%= entry[0].entrytitle %></h1>
+        <h6><%= new Date(entry[0].entrydate).toDateString() %></h6>
         <br>
         <h3>Something that happened today:</h3>
         <p><%= entry[0].response1 %></p>

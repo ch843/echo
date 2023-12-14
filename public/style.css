@@ -193,5 +193,6 @@ table {
 .entry-container {
   display: flex;
   flex-direction: column;
-  padding-left: 2em;
+  align-items: center;
+  padding: 2em;
 }
