@@ -136,7 +136,7 @@ app.post('/addEntry', async (req, res) => {
   });
 });
 
-app.post("/delete/:entryid", async(req, res)=> {
+app.get("/delete/:entryid", async(req, res)=> {
   try {
     await knex("journal").where({ entryid: req.params.entryid }).del();
     res.redirect("/history");
@@ -146,7 +146,7 @@ app.post("/delete/:entryid", async(req, res)=> {
   }
 });
 
-app.post("/view/:entryid", async(req, res)=> {
+app.get("/view/:entryid", async(req, res)=> {
   let entry = await knex("journal").where({ entryid: req.params.entryid })
   res.render("pages/entry", { entry: entry})
 });
