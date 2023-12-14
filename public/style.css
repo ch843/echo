@@ -189,3 +189,9 @@ table {
     width: 100%; 
     border-collapse: collapse; 
 }
+
+.entry-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2em;
+}
