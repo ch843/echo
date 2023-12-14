@@ -1,3 +1,5 @@
+// Group 1-2: Cassidy Hardisty, Reed Stewart, Kian Bangerter, Sky Song
+
 // THIS WILL BE OUR EXPRESS APP FILE!! (like index.js)
 const express = require('express');
 let path = require("path");
