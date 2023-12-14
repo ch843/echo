@@ -49,7 +49,7 @@ app.get('/journal', (req, res) => {
 
 app.get('/history', async (req, res) => {
   try {
-    let result = await knex.from('journal').select('entrydate', 'entrytitle').where({ username: req.session.username });
+    let result = await knex.from('journal').select('entryid', 'entrydate', 'entrytitle').where({ username: req.session.username });
     res.render('pages/history', { loggedin: req.session.loggedin, username: req.session.username, entries: result });
   } catch (error) {
     console.error(error);
@@ -134,6 +134,16 @@ app.post('/addEntry', async (req, res) => {
   }).catch(error => {
     console.error(error);
   });
+});
+
+app.post("/delete", async(req, res)=> {
+  try {
+    const user = await knex("journal").where({ entryid: req.params.entryid }).del();
+    res.redirect("/history");
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ err });
+  }
 });
 
 app.listen(port, () => {
