@@ -3,7 +3,7 @@
 <body>
     <div>
         <h3 style="font-weight: bold;"><%= entry[0].title %></h3>
-        <h6><%  = new Date(entry[0].date).toDateString() %></h6>
+        <h6><%= new Date(entry[0].date).toDateString() %></h6>
         <br><br>
         <h3>Something that happened today:</h3>
         <p><%= entry[0].response1 %></p>
