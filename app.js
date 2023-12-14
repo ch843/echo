@@ -51,6 +51,7 @@ app.get('/history', async (req, res) => {
   try {
     let result = await knex.from('journal').select('entryid', 'entrydate', 'entrytitle').where({ username: req.session.username });
     res.render('pages/history', { loggedin: req.session.loggedin, username: req.session.username, entries: result });
+    console.log("results:", result);
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal Server Error');
@@ -147,7 +148,8 @@ app.get("/delete/:entryid", async(req, res)=> {
 });
 
 app.get("/entry/:entryid", async(req, res)=> {
-  let entry = await knex("journal").select('entrydate', 'entrytitle', 'response1', 'response2', 'response3').where({ entryid: req.params.entryid, username: req.session.username })
+  let entry = await knex("journal").select('entrydate', 'entrytitle', 'response1', 'response2', 'response3').where({ entryid: req.params.entryid })
+  console.log("entry:", entry)
   res.render("pages/entry", { entry: entry, loggedin: req.session.loggedin })
 });
 
