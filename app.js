@@ -136,7 +136,7 @@ app.post('/addEntry', async (req, res) => {
   });
 });
 
-app.post("/delete", async(req, res)=> {
+app.post("/delete/:entryid", async(req, res)=> {
   try {
     await knex("journal").where({ entryid: req.params.entryid }).del();
     res.redirect("/history");
