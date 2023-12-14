@@ -147,7 +147,7 @@ app.get("/delete/:entryid", async(req, res)=> {
 });
 
 app.get("/view/:entryid", async(req, res)=> {
-  let entry = await knex("journal").where({ entryid: req.params.entryid })
+  let entry = await knex("journal").select('entrydate', 'entrytitle', 'response1', 'response2', 'response3').where({ entryid: req.params.entryid })
   res.render("pages/entry", { entry: entry})
 });
 
